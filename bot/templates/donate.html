@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contastant</title>
+    <title>Donate</title>
 </head>
 <body>
-    
-    {% if cont %}
-    <h1>Contastant info</h1>
-    {% else %}
-    <h2>Empty Database</h2>
-    {% endif %}
+     <form method="post">
+          {% csrf_token %}
+         <input  type="text" name="handle">
+         <button >submit</button>
+     </form>
 </body>
 </html>

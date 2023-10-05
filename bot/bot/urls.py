@@ -16,13 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from User import views
-from Dataset import views as v1
+from Handle_Input import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.Profile ),
-    path('db/',views.contastant_info),
-    path('form/',views.showform),
-    path('show/',views.show_handle),
-    path('fetch/',v1.Confirmation),
+    path('',views.showform ),
+    path('donate/',views.input_handle)
 ]

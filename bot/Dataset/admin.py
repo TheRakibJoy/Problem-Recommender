@@ -1,5 +1,4 @@
 from django.contrib import admin
-from Dataset.models import CM_to_Master
-
-# Register your models here.
-admin.site.register(CM_to_Master)
+from Dataset.models import Handle
+# Register your models here.s
+admin.site.register(Handle)
