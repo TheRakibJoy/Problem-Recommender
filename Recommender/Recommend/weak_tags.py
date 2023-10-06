@@ -1,21 +1,21 @@
 import requests
 import json
-import Target
-from models import Counter
+from .Target import get_lo_hi
+from .models import Counter
 def get_weak_tags(handle):
     url = 'https://codeforces.com/api/user.rating?handle=' + handle
     try:
         response = requests.get(url)
+        x = response.json()
     except:
         return 'null'
-    (current,target) = Target.get_lo_hi(handle)
+    (current,target) = get_lo_hi(handle)
     if current==-1:
         return  'null'
-    x = response.json()
-    start = 0
+    start = 1332435435465465656656765767676576577678775
     for con in x['result']:
         if con['newRating'] >= con['oldRating'] and con['newRating']>=current:
-            start = con['ratingUpdateTimeSeconds']
+            start = min(start,con['ratingUpdateTimeSeconds'])
     url = 'https://codeforces.com/api/user.status?handle=' + handle + '&from=1'
     try:
         response = requests.get(url)
@@ -32,12 +32,14 @@ def get_weak_tags(handle):
                     tags[i] = tags[i].replace(" ", "");
                     tags[i] = tags[i].replace("-", "");
                     if tags[i] not in map:
-                        map.update(tags[i],1)
+                        map.update({str(tags[i]):1})
                     else:
                         map[tags[i]]+=1
                 tags = ', '.join(tags)
     nob=Counter.objects.filter(Tag_Name = 'users').last()
     for ob in Counter.objects.all():
+        if ob.Tag_Name== 'users':
+            continue
         dorkar =0
         if target == 1200:
             dorkar = ob.Pupil//nob.Pupil

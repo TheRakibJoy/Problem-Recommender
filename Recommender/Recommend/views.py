@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Handle,Pupil,Expert,Candidate_Master,Master,Specialist,Counter
 import json
@@ -160,11 +161,36 @@ def Add(request):
     return render(request,'donate.html')
 
 
-from weak_tags import  get_weak_tags
+from .weak_tags import  get_weak_tags
+from .Target import get_lo_hi
+from .problem_giver import  give_me_problem
+def Show(request):
+    handle = request.session['handle']
+    (ase,target)=get_lo_hi(handle)
+    if target==1200:
+        Table = Pupil
+    if target == 1400:
+        Table = Specialist
+    if target == 1600:
+        Table = Expert
+    if target == 1900:
+        Table = Candidate_Master
+    if target == 2100:
+        Table = Master
+
+    res= give_me_problem(request.session['weak_tags'],Table)
+    #apatoto 1 ta pathacchi
+    pathabo = Table[res[0]]
+    return  render(request,'show.html',{'i':pathabo})
+
 def Recommend(request):
     if request.method=='POST':
         handle=request.POST.get('handle')
         if(handle is not None):
-            print(get_weak_tags(handle))
+            weak_tags=get_weak_tags(handle)
+            request.session['weak_tags']=weak_tags
+            request.session['handle'] = handle
+            return HttpResponseRedirect('show.html')
 
     return render(request,'input.html')
+

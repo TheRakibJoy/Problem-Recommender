@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('donate/', views.Add),
     path('input/', views.Recommend),
+    path('input/show.html/', views.Show),
 
 ]
