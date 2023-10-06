@@ -2,36 +2,63 @@
 <html>
 <head>
     <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+    justify-content: center;
+    align-items: center;
+         }
         .card {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 10px 20px;
             margin: 10px;
-            width: 300px;
+            width: 400px;
             background-color: #f9f9f9;
+            box-shadow: 2px 4px 13px rgba(0,0,0,0.2);
         }
-        .card h3 {
-            font-size: 18px;
-            margin-top: 0;
+        .card-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .card p {
-            margin: 0;
+        .tag {
+            background: rgba(0,0,0,0.85);
+            padding: 8px;
+            color: white;
+            border-radius: 8px;
+            font-size: 10px;
         }
-        .card a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: bold;
-        }
+
     </style>
 </head>
 <body>
+    <div>
+        <a href="/input">Back</a>
+    </div>
     <div class="card">
-        <h3>Problem ID:</h3>
-        <p>{{i.PID}}</p>
-        <h3>Index:</h3>
-        <p>{{i.Index}}</p>
-        <h3>Tags:</h3>
-        <p>{{i.Tags}}</p>
-        <a href="https://example.com">Click Here</a>
+        <div class="card-text">
+            <h3>Problem: </h3>
+            <a href="gdkg" target="_blank">Alice and Bob</a>
+        </div>
+
+        <div class="card-text" style="align-items: start;">
+
+            <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap">
+
+<!--                Just iterate through the tags array and add tag class in p tag-->
+                <p class="tag">Binary Search</p>
+                <p class="tag">dfs and similar</p>
+                <p class="tag">Binary Search</p>
+                <p class="tag">dfs and similar</p>
+                <p class="tag">Binary Search</p>
+                <p class="tag">dfs and similar</p>
+                <p class="tag">Binary Search</p>
+                <p class="tag">dfs and similar</p>
+                <p class="tag">Binary Search</p>
+                <p class="tag">dfs and similar</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>

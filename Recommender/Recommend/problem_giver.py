@@ -5,7 +5,6 @@ def give_me_problem(weak_tags,Table):
     from sklearn.feature_extraction.text import CountVectorizer
 
     cv = CountVectorizer()
-    Table=pd.DataFrame.from_records(Table.objects.all().values())
 
 
     vectors = cv.fit_transform(Table['Tags']).toarray()

@@ -1,3 +1,4 @@
+import pandas as pd
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Handle,Pupil,Expert,Candidate_Master,Master,Specialist,Counter
@@ -177,10 +178,12 @@ def Show(request):
         Table = Candidate_Master
     if target == 2100:
         Table = Master
-
+        ####
+    Table = pd.DataFrame.from_records(Table.objects.all().values())
     res= give_me_problem(request.session['weak_tags'],Table)
     #apatoto 1 ta pathacchi
-    pathabo = Table[res[0]]
+
+    pathabo = Table.iloc[res[0]]
     return  render(request,'show.html',{'i':pathabo})
 
 def Recommend(request):
