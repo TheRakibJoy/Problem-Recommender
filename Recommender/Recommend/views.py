@@ -93,7 +93,8 @@ def Data_Entry(handle, current , target):
                         Tags = tags
 
                     )
-                    ob.save()
+                    if not Pupil.objects.filter(PID=con_id, Index=index).exists():
+                        ob.save()
                 elif target == 1400:
                     ob = Specialist(
                         PID = con_id,
@@ -102,7 +103,8 @@ def Data_Entry(handle, current , target):
                         Tags = tags
 
                     )
-                    ob.save()
+                    if not Specialist.objects.filter(PID=con_id, Index=index).exists():
+                        ob.save()
                 elif target == 1600:
                     ob = Expert(
                         PID = con_id,
@@ -111,7 +113,8 @@ def Data_Entry(handle, current , target):
                         Tags = tags
 
                     )
-                    ob.save()
+                    if not Expert.objects.filter(PID=con_id, Index=index).exists():
+                        ob.save()
                 elif target == 1900:
                     ob = Candidate_Master(
                         PID = con_id,
@@ -120,7 +123,8 @@ def Data_Entry(handle, current , target):
                         Tags = tags
 
                     )
-                    ob.save()
+                    if not Candidate_Master.objects.filter(PID=con_id, Index=index).exists():
+                        ob.save()
                 elif target == 2100:
                     ob = Master(
                         PID = con_id,
@@ -129,7 +133,8 @@ def Data_Entry(handle, current , target):
                         Tags = tags
 
                     )
-                    ob.save()
+                    if not Master.objects.filter(PID=con_id, Index=index).exists():
+                        ob.save()
 
     print("Data Inserted Successfully for Level"+ target)
 
@@ -153,3 +158,13 @@ def Add(request):
                 Data_Entry(handle, 1901, 2100)
 
     return render(request,'donate.html')
+
+
+from weak_tags import  get_weak_tags
+def Recommend(request):
+    if request.method=='POST':
+        handle=request.POST.get('handle')
+        if(handle is not None):
+            print(get_weak_tags(handle))
+
+    return render(request,'input.html')
