@@ -39,24 +39,16 @@
     <div class="card">
         <div class="card-text">
             <h3>Problem: </h3>
-            <a href="gdkg" target="_blank">Alice and Bob</a>
+            <a href="https://codeforces.com/contest/{{i.PID}}/problem/{{i.Index}}" target="_blank">A Nice Problem For You!!</a>
         </div>
 
         <div class="card-text" style="align-items: start;">
 
             <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap">
 
-<!--                Just iterate through the tags array and add tag class in p tag-->
-                <p class="tag">Binary Search</p>
-                <p class="tag">dfs and similar</p>
-                <p class="tag">Binary Search</p>
-                <p class="tag">dfs and similar</p>
-                <p class="tag">Binary Search</p>
-                <p class="tag">dfs and similar</p>
-                <p class="tag">Binary Search</p>
-                <p class="tag">dfs and similar</p>
-                <p class="tag">Binary Search</p>
-                <p class="tag">dfs and similar</p>
+                {% for tag in Tags%}
+                    <p class="tag">{{tag}}</p>
+                {% endfor %}
             </div>
         </div>
     </div>

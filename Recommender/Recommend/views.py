@@ -138,7 +138,7 @@ def Data_Entry(handle, current , target):
                     if not Master.objects.filter(PID=con_id, Index=index).exists():
                         ob.save()
 
-    print("Data Inserted Successfully for Level"+ target)
+    print("Data Inserted Successfully for Level", target)
 
 def Add(request):
     if request.method=='POST':
@@ -184,7 +184,10 @@ def Show(request):
     #apatoto 1 ta pathacchi
 
     pathabo = Table.iloc[res[0]]
-    return  render(request,'show.html',{'i':pathabo})
+    print(pathabo)
+    s = pathabo.Tags
+    Tags= s.split(',')
+    return  render(request,'show.html',{'i':pathabo,'Tags':Tags})
 
 def Recommend(request):
     if request.method=='POST':
