@@ -3,12 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate</title>
+    <title>Donate Handle</title>
+
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f2f2f2;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-icon {
+            font-size: 32px;
+            margin-right: 10px;
+        }
+
+        .rounded-button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body>
-     <form method="post">
-          {% csrf_token %}
-         <input  type="text" name="handle">
-         <button >submit</button>
-     </form>
+<body style="text-align: center; font-family: Arial, sans-serif;">
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="navbar-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="navbar-name">
+                <a href="/" style="text-decoration: none; color: #ecf0f1;">ProblemBuddy</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; place-content: center; min-height: 100vh">
+        <form method="post" style="background: ghostwhite; display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(0,0,0,0.3); padding: 35px; box-shadow: 2px 4px 13px rgba(0,0,0,0.2); border-radius: 10px;">
+            {% csrf_token %}
+            <label style="margin-bottom: 8px;">Enter A Handle Which is Inspiring to You</label>
+            <input style="margin-bottom: 8px; padding: 4px; border-radius: 8px; outline: none; border: 1px solid dimgray;" type="text" name="handle">
+            <button style="padding: 4px 15px;">Submit</button>
+        </form>
+    </div>
 </body>
+</html>

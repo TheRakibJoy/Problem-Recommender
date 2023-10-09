@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-    justify-content: center;
-    align-items: center;
-         }
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-icon {
+            font-size: 32px;
+            margin-right: 10px;
+        }
+        .navbar-name {
+            font-size: 24px;
+        }
+        /* Your existing styles */
+        .content {
+            margin-top: 80px;
+        }
         .card {
             border: 1px solid #ddd;
             padding: 10px 20px;
@@ -29,26 +59,38 @@
             border-radius: 8px;
             font-size: 10px;
         }
-
     </style>
 </head>
 <body>
-    <div>
-        <a href="/input">Back</a>
-    </div>
-    <div class="card">
-        <div class="card-text">
-            <h3>Problem: </h3>
-            <a href="https://codeforces.com/contest/{{i.PID}}/problem/{{i.Index}}" target="_blank">A Nice Problem For You!!</a>
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="navbar-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="navbar-name">
+                <a href="/" style="text-decoration: none; color: #ecf0f1;">ProblemBuddy</a>
+            </div>
         </div>
+    </div>
 
-        <div class="card-text" style="align-items: start;">
+    <!-- Page content -->
+    <div class="content">
+        <a href="/input">Back</a>
+        <div class="card">
+            <div class="card-text">
+                <h3>Problem: </h3>
+                <a href="https://codeforces.com/contest/{{i.PID}}/problem/{{i.Index}}" target="_blank">A Nice Problem For You!!</a>
+            </div>
 
-            <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap">
+            <div class="card-text" style="align-items: start;">
 
-                {% for tag in Tags%}
-                    <p class="tag">{{tag}}</p>
-                {% endfor %}
+                <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap">
+
+                    {% for tag in Tags%}
+                        <p class="tag">{{tag}}</p>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

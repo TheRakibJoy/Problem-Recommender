@@ -20,6 +20,7 @@ from Recommend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.Home),
     path('donate/', views.Add),
     path('input/', views.Recommend),
     path('input/show.html/', views.Show),

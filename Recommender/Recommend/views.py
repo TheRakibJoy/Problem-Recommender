@@ -184,7 +184,6 @@ def Show(request):
     #apatoto 1 ta pathacchi
 
     pathabo = Table.iloc[res[0]]
-    print(pathabo)
     s = pathabo.Tags
     Tags= s.split(',')
     return  render(request,'show.html',{'i':pathabo,'Tags':Tags})
@@ -200,3 +199,5 @@ def Recommend(request):
 
     return render(request,'input.html')
 
+def Home(request):
+    return render(request,'home.html')
