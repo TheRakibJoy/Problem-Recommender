@@ -19,7 +19,7 @@ def give_me_problem(weak_tags,Table):
         weak_vector = cv.transform([weak_tags]).toarray()
         similarity = cosine_similarity(weak_vector, vectors)
         distance = similarity[0]
-        my_list = sorted(list(enumerate(distance)), reverse=True, key=lambda x: x[1])[1:3]
+        my_list = sorted(list(enumerate(distance)), reverse=True, key=lambda x: x[1])[1:30]
         problem_list = list()
         for x in my_list:
             problem_list.append(x[0])
@@ -28,13 +28,4 @@ def give_me_problem(weak_tags,Table):
     res = recommend(weak_tags)
     return res
 
-    # cnt = 1;
-    # for i in res:
-    #     print("Problem ", cnt)
-    #     cnt += 1
-    #     print("Contest ID : ", Table['ID'][i])
-    #     print("Problem No. : ", Table['Index'][i])
-    #     print("Rating : ", Table['Rating'][i])
-    #     print("Tags : ", Table['Tags'][i])
-    #     print("")
 

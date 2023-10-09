@@ -1,3 +1,5 @@
+import random
+
 import pandas as pd
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -165,6 +167,7 @@ def Add(request):
 from .weak_tags import  get_weak_tags
 from .Target import get_lo_hi
 from .problem_giver import  give_me_problem
+import random
 def Show(request):
     handle = request.session['handle']
     (ase,target)=get_lo_hi(handle)
@@ -182,8 +185,8 @@ def Show(request):
     Table = pd.DataFrame.from_records(Table.objects.all().values())
     res= give_me_problem(request.session['weak_tags'],Table)
     #apatoto 1 ta pathacchi
-
-    pathabo = Table.iloc[res[0]]
+    random_index = random.randint(0, len(res) - 1)
+    pathabo = Table.iloc[res[random_index]]
     s = pathabo.Tags
     Tags= s.split(',')
     return  render(request,'show.html',{'i':pathabo,'Tags':Tags})
